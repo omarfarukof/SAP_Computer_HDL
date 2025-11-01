@@ -1,0 +1,11 @@
+log
+*.log
+vlog*
+*.wlf
+
+# Modelsim data
+work
+modelsim.ini
+
+# Temp ignore
+Doc
