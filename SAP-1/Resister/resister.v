@@ -1,18 +1,19 @@
 module resister (
     input CLK,
     input RST,
-    input LOAD,
+    input EnIn,
+    input EnOut,
     input [7:0] R_IN,
-    output [7:0] R_OUT
+    output reg [7:0] R_OUT
 );
-
-always @(posedge CLK or posedge RST) begin
-    if (RST) begin
-        R_OUT <= 8'b0;
+    reg [7:0] MEM
+    always @(posedge CLK or posedge RST) begin
+        if (RST)
+            MEM <= 8'b0;
+        else if (EnIn)
+            MEM <= R_IN;
+        else if (EnOut)
+            R_OUT <= MEM;
     end
-    else if (LOAD) begin
-        R_OUT <= R_IN;
-    end
-end
 
 endmodule
