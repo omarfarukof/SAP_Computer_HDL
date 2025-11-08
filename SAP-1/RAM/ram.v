@@ -7,6 +7,6 @@ module ram (
 );
     reg [7:0] reg [15:0];
 
-    // ... ... ... 
+    //TODO: RAM Code
     
 endmodule

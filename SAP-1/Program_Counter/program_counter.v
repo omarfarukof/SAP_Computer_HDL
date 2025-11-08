@@ -4,14 +4,13 @@ module program_counter (
     input INC,
     output reg [3:0] count
 );
-
-always @(posedge CLK or posedge RST) begin
-    if (RST) begin
-        count <= 4'b0;
+    always @(posedge CLK or posedge RST) begin
+        if (RST) begin
+            count <= 4'b0;
+        end
+        else if (INC) begin
+            count <= count + 1;
+        end
     end
-    else if (INC) begin
-        count <= count + 1;
-    end
-end
 
 endmodule
