@@ -1,8 +1,9 @@
 module controller (
     input CLK,
     input RST,
+    input [3:0] OPC,
     output HLT,
-    output COUT
+    output [7:0] COUT
 );  
     reg TCount;
     initial begin
@@ -21,15 +22,24 @@ module controller (
         end
         if (TCount==0) begin
             //TODO: controller == 0
+            { CO, MI } = 2'b11;
         end
         if (TCount==1) begin
             //TODO: controller == 1
+            { CO, MI } = 2'b00;
+            CE = 1'b1;
         end
         if (TCount==2) begin
             //TODO: controller == 2
+            CE = 1'b0;
+            { RO, II } = 2'b11;
         end
         if (TCount==3) begin
             //TODO: controller == 3
+            { RO, II } = 2'b00;
+            if (conditions) begin
+                // TODO: OpCode
+            end
         end
         if (TCount==4) begin
             //TODO: controller == 4
